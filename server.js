@@ -57,6 +57,7 @@ app.get('/api/notes', (req, res) => {
 
 //Create post route
 app.post('/api/notes',(req,res)=>{
+      
     //set id based on what the next index of the array will be
     req.body.id = data.note.length.toString();
 

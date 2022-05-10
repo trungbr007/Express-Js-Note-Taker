@@ -1,4 +1,4 @@
-[{
+{
   "note": [
     {
       "title": "Test Title",
@@ -28,6 +28,21 @@
       "title": "peter",
       "text": "Nguyen",
       "id": "5"
+    },
+    {
+      "title": "haru",
+      "text": "Nguyen",
+      "id": "6"
+    },
+    {
+      "title": "haru",
+      "text": "Nguyen",
+      "id": "7"
+    },
+    {
+      "title": "trung tan",
+      "text": "Nguyen",
+      "id": "8"
     }
   ]
-}]
+}
