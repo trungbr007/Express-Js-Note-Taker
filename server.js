@@ -42,7 +42,7 @@ function createNewNotes(body, notesArray) {
 //Create routes/get
 
 app.get('/api/notes', (req, res) => {
-    res.json(data);
+    res.json(data.note);
   });
 
   
