@@ -2,11 +2,12 @@ const notes = require('./Develop/db/db.json');
 const express = require('express');
 const path = require ("path");
 const fs = require ("fs");
-const util = require ("util");
+
 
 
 //Setting up Server
 const PORT = process.env.PORT || 3001;
+//Init Express
 const app = express();
 
 //Add Middleware So the Application Can Accept POST Data
@@ -19,13 +20,13 @@ app.use(express.json());
 //Static Middleware
 app.use(express.static("./Develop/public"));
 
-//the API route Get method
+//Create endpoints
 
 app.get('/api/notes', (req, res) => {
   res.json(notes);
 });
 
-// API Route Post request
+// API Route Post method
 app.post('/api/notes', (req, res) => {
   
   req.body = notes.length.toString();
@@ -59,6 +60,24 @@ function validateNote(notes) {
 }
  
 
+//route to  index.HTML
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, './public/index.html'));
+});
+
+//route to notes.HTML
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, './public/notes.html'));
+});
+
+// wildcard route
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, './public/index.html'));
+});
+
+
+
+///Listening
   app.listen(PORT, () => {
     console.log(`API server now on port ${PORT}!`);
   });
