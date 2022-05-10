@@ -25,12 +25,13 @@ app.post('/api/notes', (req, res) => {
   
   req.body = database.length.toString();
 
-  // add animal to json file and animals array in this function
+  // add notes to json file and notes array in this function
   const notes = createNewNotes(req.body, database);
 
   res.json(database);
 });
 
+// create function to add notes and write to file
 function createNewNotes(body, notesArray) {
   const notes = body;
   notesArray.push(notes);
