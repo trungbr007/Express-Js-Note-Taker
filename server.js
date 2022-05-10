@@ -22,8 +22,8 @@ app.get('/api/notes', (req, res) => {
 });
 
 app.post('/api/notes', (req, res) => {
-  // set id based on what the next index of the array will be
-  req.body.id = database.length.toString();
+  
+  req.body = database.length.toString();
 
   // add animal to json file and animals array in this function
   const notes = createNewNotes(req.body, database);
