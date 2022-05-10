@@ -44,6 +44,15 @@ app.get('/api/notes', (req, res) => {
     res.json(data);
   });
 
+  
+  app.get('/api/notes/:id', (req, res) => {
+    const result = findById(req.params.id, data);
+    if (result) {
+      res.json(result);
+    } else {
+      res.send(404);
+    }
+  });
 
 //Create post route
 app.post('/api/notes',(req,res)=>{
