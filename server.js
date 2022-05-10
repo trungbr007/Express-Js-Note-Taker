@@ -69,10 +69,12 @@ app.post('/api/notes',(req,res)=>{
       }
     });
     
+    //Delete Route 
+// app.delete('/api/notes/',(req,res)=>{
+//   data.note.length = 0;
 
-  
-//Delete Route 
-// app.delete()
+//   res.json({ok: true});
+
 
 //Routes to serve .html files
 
@@ -87,6 +89,8 @@ app.get('/', (req, res) => {
   app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, './Develop/public/index.html'));
   });
+
+
 
 
   //Listening
