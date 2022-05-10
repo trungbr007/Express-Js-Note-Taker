@@ -1,84 +1,52 @@
-const notes = require('./Develop/db/db.json');
-const express = require('express');
-const path = require ("path");
-const fs = require ("fs");
+const express =require('express');
+const { get } = require('express/lib/response');
+const path =require('path');
+const data =require ('./Develop/db/db.json');
+const PORT =process.env.PORT || 3001;
+
+//Set up Server
+const app =express();
 
 
 
-//Setting up Server
-const PORT = process.env.PORT || 3001;
-//Init Express
-const app = express();
-
-//Add Middleware So the Application Can Accept POST Data
 // parse incoming string or array data
 app.use(express.urlencoded({ extended: true }));
-
 // parse incoming JSON data
-app.use(express.json());
+app.use(express.json())
+//Set static folder, it will have acces to all the files in the public by changing the endpoints
+app.use(express.static(path.join(__dirname,'./Develop/public')));
 
-//Static Middleware
-app.use(express.static("./Develop/public"));
+//Create routes/get
 
-//Create endpoints
-
-app.get('/api/notes', (req, res) => {
-  res.json(notes);
+app.get("/api/notes/", (req,res) =>{
+    res.json(data);
 });
 
-// API Route Post method
-app.post('/api/notes', (req, res) => {
-  
-  req.body = notes.length.toString();
+//Create post route
+app.post("/api/notes/", (req,res)=>{
+    data.push(req.body);
+    res.json(true);
+})
 
-  // add notes to json file and notes array in this function
-  const notes = createNewNotes(req.body, notes);
+//Delete Route 
+// app.delete()
 
-  res.json(notes);
-});
+//Routes to serve .html files
 
-// create function to add notes and write to file
-function createNewNotes(body, notesArray) {
-  const notes = body;
-  notesArray.push(notes);
-
-  fs.writeFileSync(path.join(__dirname, './Develop/db/db.json'),
-    JSON.stringify({ notes: notesArray }, null, 2)
-  );
-  return notes;
-}
-
-//function to validate input
-function validateNote(notes) {
-  if (!notes.title || typeof notes.title !== 'string') {
-      return false;
-  }
-  if (!notes.text || typeof notes.text !== 'string') {
-      return false;
-  }
-  return true;
-}
- 
-
-//route to  index.HTML
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, './public/index.html'));
-});
-
-//route to notes.HTML
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, './public/notes.html'));
-});
-
-// wildcard route
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, './public/index.html'));
-});
-
-
-
-///Listening
-  app.listen(PORT, () => {
-    console.log(`API server now on port ${PORT}!`);
+    res.sendFile(path.join(__dirname, './Develop/public/index.html'));
   });
 
+  app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, './Develop/public/notes.html'));
+  });
+
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, './Develop/public/index.html'));
+  });
+
+
+  //Listening
+app.listen(PORT,()=>{
+    console.log(`Server started on port ${PORT}`);
+})
