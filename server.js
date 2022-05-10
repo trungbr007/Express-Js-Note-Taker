@@ -16,6 +16,7 @@ app.use(express.json())
 
 //Set static folder, it will have acces to all the files in the public by changing the endpoints
 app.use(express.static(path.join(__dirname,'./Develop/public')));
+
 //Validate notes function
 function validateNote(note) {
     if (!note.title|| typeof note.title !== 'string') {
