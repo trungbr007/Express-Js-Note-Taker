@@ -12,8 +12,12 @@ const app = express();
 //Add Middleware So the Application Can Accept POST Data
 // parse incoming string or array data
 app.use(express.urlencoded({ extended: true }));
+
 // parse incoming JSON data
 app.use(express.json());
+
+//Static Middleware
+app.use(express.static("./Develop/public"));
 
 //Add the route Get method
 
