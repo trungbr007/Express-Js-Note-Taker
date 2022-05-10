@@ -19,12 +19,13 @@ app.use(express.json());
 //Static Middleware
 app.use(express.static("./Develop/public"));
 
-//Add the route Get method
+//the API route Get method
 
 app.get('/api/notes', (req, res) => {
   res.json(database);
 });
 
+// API Route Post request
 app.post('/api/notes', (req, res) => {
   
   req.body = database.length.toString();
