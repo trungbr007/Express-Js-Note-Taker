@@ -20,7 +20,7 @@
    Github: https://github.com/trungbr007/Express-Js-Note-Taker  
 
   ## Heroku Link
-  Please contact me via gmail: https://frozen-shelf-21199.herokuapp.com/  if you have any questions
+  https://frozen-shelf-21199.herokuapp.com/  
 
  
 ## Screenshot image
