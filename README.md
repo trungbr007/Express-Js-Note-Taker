@@ -14,7 +14,7 @@
   I have been given front end stater code and I my task is usinng Express JS  to build a server and connect front end with the server. Using get and post and delete method to to communicate with the UI
 
   ## Languages
-   has been used for the project
+   ExpressJS has been used for the project
 
   ## My Github link: 
    Github: https://github.com/trungbr007/Express-Js-Note-Taker  
