@@ -1,5 +1,5 @@
 const express =require('express');
-const { get } = require('express/lib/response');
+const fs =require ('fs');
 const path =require('path');
 const data =require ('./Develop/db/db.json');
 const PORT =process.env.PORT || 3001;
@@ -15,19 +15,23 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json())
 //Set static folder, it will have acces to all the files in the public by changing the endpoints
 app.use(express.static(path.join(__dirname,'./Develop/public')));
+//Filter 
+
+
 
 //Create routes/get
 
-app.get("/api/notes/", (req,res) =>{
+app.get('/api/notes', (req, res) => {
+    
     res.json(data);
-});
+  });
+
+  
+  
 
 //Create post route
-app.post("/api/notes/", (req,res)=>{
-    data.push(req.body);
-    res.json(true);
-})
 
+  
 //Delete Route 
 // app.delete()
 
